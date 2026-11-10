@@ -8,7 +8,27 @@ def test_tuesday():
     """Begin with an independently reasoned payment counterexample."""
     assert greedy_change([1, 4, 6], 8) == [6, 1, 1]
     assert exhaustive_change([1, 4, 6], 8) == [4, 4]
-    # Add the gets-stuck-but-reachable, impossible, agreement, zero, and input checks.
+    
+    # Stuck-but-reachable case: greedy fails but exhaustive succeeds.
+    assert greedy_change([4, 6], 8) is None
+    assert exhaustive_change([4, 6], 8) == [4, 4]
+    # Impossible case: no combination can reach the target.
+    assert greedy_change([4, 6], 7) is None
+    assert exhaustive_change([4, 6], 7) is None
+    # Agreement case: greedy and exhaustive should match.
+    assert greedy_change([1, 5, 10], 12) == exhaustive_change([1, 5, 10], 12)
+    # Zero-target case: should return an empty list.
+    assert greedy_change([1, 4, 6], 0) == []
+    assert exhaustive_change([1, 4, 6], 0) == []
+    # Input list should not be modified by the function.
+    coins = [1, 4, 6]
+    greedy_change(coins, 8)
+    assert coins == [1, 4, 6]
+    # Can also check that exhaustive_change does not modify the input list.
+    #* AI suggested adding the check for exhaustive_change here
+    coins = [1, 4, 6]
+    exhaustive_change(coins, 8)
+    assert coins == [1, 4, 6]
 
 
 def test_thursday():
@@ -25,4 +45,4 @@ if __name__ == "__main__":
     test_tuesday()
     # THURSDAY: uncomment the following call when implementing the cache.
     # test_thursday()
-    print("Tuesday starting check passed; expand the tests before submitting.")
+    print("Tuesday starting check passed after tests expanded.")
