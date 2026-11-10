@@ -1,6 +1,6 @@
 """Supplied validation, reference, recurrence, and fresh-run counter wiring."""
 
-from ALGO_07_PROJECT_ELI_GERRETH.reference_solver import find_best_change
+from reference_solver import find_best_change
 
 
 def validate_change(denominations, target):
