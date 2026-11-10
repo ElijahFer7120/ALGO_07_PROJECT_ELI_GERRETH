@@ -10,6 +10,14 @@ ENABLE_MEMOIZATION = False  # Change to True after Thursday's helper works.
 def greedy_change(denominations, target):
     """Return largest-first exact change, or None when that choice gets stuck."""
     coins = validate_change(denominations, target)
+    chosen, unpaid = [], target
+    for coin in sorted(denominations, reverse=True):
+        while unpaid >= coin:
+            chosen.append(coin)
+            unpaid -= coin
+    if unpaid == 0:
+        return chosen
+    return None
     # Keep chosen coins and the amount still unpaid.
     # Consider the supplied largest-first coin order.
     # Keep using a coin while it fits the unpaid amount.
