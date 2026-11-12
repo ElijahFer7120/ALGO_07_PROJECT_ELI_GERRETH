@@ -25,7 +25,7 @@ def test_tuesday():
     greedy_change(coins, 8)
     assert coins == [1, 4, 6]
     # Can also check that exhaustive_change does not modify the input list.
-    #* AI suggested adding the check for exhaustive_change here
+    #* AI suggested adding the check for exhaustive_change below
     coins = [1, 4, 6]
     exhaustive_change(coins, 8)
     assert coins == [1, 4, 6]
