@@ -38,11 +38,28 @@ def test_thursday():
     assert calls == 9
     assert hits == 3
     assert len(cache) == 6
+    
+    result, calls, hits, cache = cached_fibonacci(0, calculate_cached)
+    assert result == 0
+    assert cache == {0: 0}
+    
+    result, calls, hits, cache = cached_fibonacci(1, calculate_cached)
+    assert result == 1
+    assert cache == {1: 1}
+    
+    result, calls, hits, cache = cached_fibonacci(6, calculate_cached)
+    assert result == 8
+    
+    first = cached_fibonacci(5, calculate_cached)
+    second = cached_fibonacci(5, calculate_cached)
+    assert first[:3] == second[:3]
+    assert first[3] == second[3]
+    assert first[3] is not second[3]
     # Add base cases, another known answer, fresh repeated runs, and invalid n.
 
 
 if __name__ == "__main__":
     test_tuesday()
     # THURSDAY: uncomment the following call when implementing the cache.
-    # test_thursday()
+    test_thursday()
     print("Tuesday starting check passed after tests expanded.")

@@ -1,6 +1,5 @@
 """Optional AL07 scaffold: Tuesday payment choices, Thursday saved answers."""
 
-from inspect import trace
 
 from investigation_support import validate_change
 from investigation_display import run
