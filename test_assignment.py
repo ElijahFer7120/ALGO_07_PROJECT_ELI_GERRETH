@@ -63,3 +63,4 @@ if __name__ == "__main__":
     # THURSDAY: uncomment the following call when implementing the cache.
     test_thursday()
     print("Tuesday starting check passed after tests expanded.")
+    print("Thursday starting check passed after tests expanded.")
